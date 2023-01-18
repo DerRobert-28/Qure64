@@ -6,7 +6,7 @@ $ERROR expected: 'Math.bi'
 $ENDIF
 
 function Math.addMemoizedInt$(this$, value&&)
-	if Math.isCurriedInt(this$, value&&) then
+	if Math.isMemoizedInt(this$, value&&) then
 		Math.addMemoizedInt = this$
 	else
 		Math.addMemoizedInt = this$ + _mk$(_integer64, value&&)
