@@ -44,6 +44,11 @@ HandleException:
 	resume next
 end
 
+'$INCLUDE:'system/Color.bi'
+'$INCLUDE:'system/Console.bi'
+'$INCLUDE:'system/Exception.bi'
+'$INCLUDE:'system/Object.bi'
+
 function new&(this$)
 	shared GlobalObjectTable$()
 	dim each&, index&, item$, lastItem&
@@ -117,10 +122,5 @@ end sub
 sub try()
 	on error goto HandleException
 end sub
-
-'$INCLUDE:'system/Color.bi'
-'$INCLUDE:'system/Console.bi'
-'$INCLUDE:'system/Exception.bi'
-'$INCLUDE:'system/Object.bi'
 
 $ENDIF
