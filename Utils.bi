@@ -1,10 +1,10 @@
 $IF QBUTILS=UNDEFINED THEN
 $LET QBUTILS=DEFINED
 
-$IF QBCC=UNDEFINED THEN
-$ERROR expected:'qbcc.bi'
+$IF QBCC_SYSTEM=UNDEFINED THEN
+$ERROR expected:'System.bi'
 $ENDIF
 
-'$INCLUDE:'qbUtils/Math.bi'
+'$INCLUDE:'Utils/Math.bi'
 
 $ENDIF

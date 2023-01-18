@@ -2,7 +2,7 @@ $IF QBCC_CONSOLE=UNDEFINED THEN
 $LET QBCC_CONSOLE=DEFINED
 
 $IF QBCC=UNDEFINED THEN
-$ERROR expected: 'qbcc\system.bi'
+$ERROR expected: 'System.bi'
 $ENDIF
 
 '$INCLUDE:'Console/Background.bi'

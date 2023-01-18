@@ -2,7 +2,7 @@ $IF QBTYPES_STRINGS=UNDEFINED THEN
 $LET QBTYPES_STRINGS=DEFINED
 
 $IF QBTYPES=UNDEFINED THEN
-$ERROR expected: 'qbcc.bi'
+$ERROR expected: 'qbcc/System.bi'
 $ENDIF
 
 '$INCLUDE:'Strings/areEqual.bi'

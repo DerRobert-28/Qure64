@@ -2,7 +2,7 @@ $IF QBTYPES_STRING=UNDEFINED THEN
 $LET QBTYPES_STRING=DEFINED
 
 $IF QBTYPES=UNDEFINED THEN
-$ERROR expected: 'qbcc.bi'
+$ERROR expected: 'qbcc/System.bi'
 $ENDIF
 
 '$INCLUDE:'String\append.bi'

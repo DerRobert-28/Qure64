@@ -1,8 +1,8 @@
-$IF QBUNITTEST=UNDEFINED THEN
-$LET QBUNITTEST=DEFINED
+$IF QBCC_UNITTEST=UNDEFINED THEN
+$LET QBCC_UNITTEST=DEFINED
 
-$IF QBCC=UNDEFINED THEN
-$ERROR expected:'qbcc.bi'
+$IF QBCC_SYSTEM=UNDEFINED THEN
+$ERROR expected:'System.bi'
 $ENDIF
 
 '*****************************************
@@ -33,6 +33,6 @@ function Main%(argc%, argv$())
 	call After(world)
 end function
 
-'$INCLUDE:'qbUnitTest/Assert.bi'
+'$INCLUDE:'UnitTest/Assert.bi'
 
 $ENDIF

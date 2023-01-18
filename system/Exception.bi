@@ -2,7 +2,7 @@ $IF QBCC_EXCEPTION=UNDEFINED THEN
 $LET QBCC_EXCEPTION=DEFINED
 
 $IF QBCC=UNDEFINED THEN
-$ERROR expected: 'qbcc\system.bi'
+$ERROR expected: 'System.bi'
 $ENDIF
 
 'type Exception

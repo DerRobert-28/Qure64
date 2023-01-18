@@ -2,7 +2,7 @@ $IF QBUTILS_MATH=UNDEFINED THEN
 $LET QBUTILS_MATH=DEFINED
 
 $IF QBUTILS=UNDEFINED THEN
-$ERROR expected: 'qbcc.bi'
+$ERROR expected: 'Utils.bi'
 $ENDIF
 
 '$INCLUDE:'Math/Abs.bi'

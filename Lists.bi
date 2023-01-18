@@ -1,13 +1,13 @@
-$IF QBLISTS=UNDEFINED THEN
-$LET QBLISTS=DEFINED
+$IF QBCC_LISTS=UNDEFINED THEN
+$LET QBCC_LISTS=DEFINED
 
-$IF QBCC=UNDEFINED THEN
-$ERROR expected:'qbcc.bi'
+$IF QBCC_SYSTEM=UNDEFINED THEN
+$ERROR expected:'System.bi'
 $ENDIF
 
-'$INCLUDE:'qbLists/TList.bi'
+'$INCLUDE:'Lists/TList.bi'
 
-'$INCLUDE:'qbLists/LongList.bi'
-'$INCLUDE:'qbLists/StringList.bi'
+'$INCLUDE:'Lists/LongList.bi'
+'$INCLUDE:'Lists/StringList.bi'
 
 $ENDIF

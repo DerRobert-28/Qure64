@@ -1,10 +1,10 @@
 $IF QBARRAYS=UNDEFINED THEN
 $LET QBARRAYS=DEFINED
 
-$IF QBCC=UNDEFINED THEN
-$ERROR expected:'qbcc.bi'
+$IF QBCC_SYSTEM=UNDEFINED THEN
+$ERROR expected:'System.bi'
 $ENDIF
 
-'x$INCLUDE:'qbArrays/*.bi'
+'x$INCLUDE:'Arrays/*.bi'
 
 $ENDIF

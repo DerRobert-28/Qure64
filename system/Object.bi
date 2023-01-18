@@ -1,8 +1,8 @@
 $IF QBCC_OBJECT=UNDEFINED THEN
 $LET QBCC_OBJECT=DEFINED
 
-$IF QBCC=UNDEFINED THEN
-$ERROR expected: 'qbcc\system.bi'
+$IF QBCC_SYSTEM=UNDEFINED THEN
+$ERROR expected: 'System.bi'
 $ENDIF
 
 type Object

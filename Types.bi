@@ -1,28 +1,28 @@
-$IF QBTYPES=UNDEFINED THEN
-$LET QBTYPES=DEFINED
+$IF QB_TYPES=UNDEFINED THEN
+$LET QB_TYPES=DEFINED
 
-$IF QBCC=UNDEFINED THEN
-$ERROR expected:'qbcc.bi'
+$IF QBCC_SYSTEM=UNDEFINED THEN
+$ERROR expected:'System.bi'
 $ENDIF
 
-'$INCLUDE:'qbTypes/Boolean.bi'
-'$INCLUDE:'qbTypes/Byte.bi'
-'$INCLUDE:'qbTypes/Bytes.bi'
-'$INCLUDE:'qbTypes/Char.bi'
-'$INCLUDE:'qbTypes/Chars.bi'
-'$INCLUDE:'qbTypes/Double.bi'
-'$INCLUDE:'qbTypes/Doubles.bi'
-'$INCLUDE:'qbTypes/Float.bi'
-'$INCLUDE:'qbTypes/Floats.bi'
-'$INCLUDE:'qbTypes/Integer.bi'
-'$INCLUDE:'qbTypes/Integers.bi'
-'$INCLUDE:'qbTypes/Long.bi'
-'$INCLUDE:'qbTypes/Longs.bi'
-'$INCLUDE:'qbTypes/Real.bi'
-'$INCLUDE:'qbTypes/Reals.bi'
-'$INCLUDE:'qbTypes/Short.bi'
-'$INCLUDE:'qbTypes/Shorts.bi'
-'$INCLUDE:'qbTypes/String.bi'
-'$INCLUDE:'qbTypes/Strings.bi'
+'$INCLUDE:'Types/Boolean.bi'
+'$INCLUDE:'Types/Byte.bi'
+'$INCLUDE:'Types/Bytes.bi'
+'$INCLUDE:'Types/Char.bi'
+'$INCLUDE:'Types/Chars.bi'
+'$INCLUDE:'Types/Double.bi'
+'$INCLUDE:'Types/Doubles.bi'
+'$INCLUDE:'Types/Float.bi'
+'$INCLUDE:'Types/Floats.bi'
+'$INCLUDE:'Types/Integer.bi'
+'$INCLUDE:'Types/Integers.bi'
+'$INCLUDE:'Types/Long.bi'
+'$INCLUDE:'Types/Longs.bi'
+'$INCLUDE:'Types/Real.bi'
+'$INCLUDE:'Types/Reals.bi'
+'$INCLUDE:'Types/Short.bi'
+'$INCLUDE:'Types/Shorts.bi'
+'$INCLUDE:'Types/String.bi'
+'$INCLUDE:'Types/Strings.bi'
 
 $ENDIF
