@@ -1,0 +1,12 @@
+$IF QBUTILS_MATH_E=UNDEFINED THEN
+$LET QBUTILS_MATH_E=DEFINED
+
+$IF QBUTILS_MATH=UNDEFINED THEN
+$ERROR expected: 'Math.bi'
+$ENDIF
+
+function Math.E##()
+	Math.E = exp(1##)
+end function
+
+$ENDIF

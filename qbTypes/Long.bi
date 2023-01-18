@@ -1,0 +1,12 @@
+$IF QBTYPES_LONG=UNDEFINED THEN
+$LET QBTYPES_LONG=DEFINED
+
+$IF QBTYPES=UNDEFINED THEN
+$ERROR expected: 'qbcc.bi'
+$ENDIF
+
+'$INCLUDE:'Long\if.bi'
+'$INCLUDE:'Long\toString.bi'
+'$INCLUDE:'Long\valueOf.bi'
+
+$ENDIF

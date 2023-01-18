@@ -1,0 +1,12 @@
+$IF QBLISTS_STRINGLIST_CLEAR=UNDEFINED THEN
+$LET QBLISTS_STRINGLIST_CLEAR=DEFINED
+
+$IF QBLISTS_STRINGLIST=UNDEFINED THEN
+$ERROR expected: 'StringList.bi'
+$ENDIF
+
+sub StringList.clear(this as StringList)
+	this.value = ""
+end sub
+
+$ENDIF

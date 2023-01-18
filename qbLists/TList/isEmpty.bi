@@ -1,0 +1,12 @@
+$IF QBLISTS_TLIST_ISEMPTY=UNDEFINED THEN
+$LET QBLISTS_TLIST_ISEMPTY=DEFINED
+
+$IF QBLISTS_TLIST=UNDEFINED THEN
+$ERROR expected: 'TList.bi'
+$ENDIF
+
+function TList.isEmpty%%(this as TList)
+	TList.isEmpty = (len(TList.toString(this)) = 0)
+end sub
+
+$ENDIF

@@ -1,0 +1,12 @@
+$IF QBLISTS_TLIST_CLEAR=UNDEFINED THEN
+$LET QBLISTS_TLIST_CLEAR=DEFINED
+
+$IF QBLISTS_TLIST=UNDEFINED THEN
+$ERROR expected: 'TList.bi'
+$ENDIF
+
+sub TList.clear(this as TList)
+	this.value = ""
+end sub
+
+$ENDIF

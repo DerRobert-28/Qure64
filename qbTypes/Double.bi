@@ -1,0 +1,12 @@
+$IF QBTYPES_DOUBLE=UNDEFINED THEN
+$LET QBTYPES_DOUBLE=DEFINED
+
+$IF QBTYPES=UNDEFINED THEN
+$ERROR expected: 'qbcc.bi'
+$ENDIF
+
+'$INCLUDE:'Double\if.bi'
+'$INCLUDE:'Double\toString.bi'
+'$INCLUDE:'Double\valueOf.bi'
+
+$ENDIF

@@ -1,0 +1,12 @@
+$IF QBTYPES_REAL=UNDEFINED THEN
+$LET QBTYPES_REAL=DEFINED
+
+$IF QBTYPES=UNDEFINED THEN
+$ERROR expected: 'qbcc.bi'
+$ENDIF
+
+'$INCLUDE:'Real\if.bi'
+'$INCLUDE:'Real\toString.bi'
+'$INCLUDE:'Real\valueOf.bi'
+
+$ENDIF

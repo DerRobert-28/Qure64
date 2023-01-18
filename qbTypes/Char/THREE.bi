@@ -1,0 +1,12 @@
+$IF QBTYPES_CHAR_THREE=UNDEFINED THEN
+$LET QBTYPES_CHAR_THREE=DEFINED
+
+$IF QBTYPES_CHAR=UNDEFINED THEN
+$ERROR expected: 'Char.bi'
+$ENDIF
+
+function Char.THREE$()
+	Char.THREE = Char.from(51)
+end function
+
+$ENDIF

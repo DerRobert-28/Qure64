@@ -1,0 +1,12 @@
+$IF QBCC_COLOR_MAGENTA=UNDEFINED THEN
+$LET QBCC_COLOR_MAGENTA=DEFINED
+
+$IF QBCC_COLOR=UNDEFINED THEN
+$ERROR expected: 'Color.bi'
+$ENDIF
+
+function Color.MAGENTA&()
+	Color.MAGENTA = Color.of(255, 0, 255)
+end function
+
+$ENDIF

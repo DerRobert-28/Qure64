@@ -1,0 +1,12 @@
+$IF QBLISTS_LONGLIST_CLEAR=UNDEFINED THEN
+$LET QBLISTS_LONGLIST_CLEAR=DEFINED
+
+$IF QBLISTS_LONGLIST=UNDEFINED THEN
+$ERROR expected: 'LongList.bi'
+$ENDIF
+
+sub LongList.clear(this as LongList)
+	TList.clear this.value
+end sub
+
+$ENDIF

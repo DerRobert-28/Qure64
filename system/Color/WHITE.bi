@@ -1,0 +1,12 @@
+$IF QBCC_COLOR_WHITE=UNDEFINED THEN
+$LET QBCC_COLOR_WHITE=DEFINED
+
+$IF QBCC_COLOR=UNDEFINED THEN
+$ERROR expected: 'Color.bi'
+$ENDIF
+
+function Color.WHITE&()
+	Color.WHITE = Color.of(255, 255, 255)
+end function
+
+$ENDIF

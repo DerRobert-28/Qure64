@@ -1,0 +1,12 @@
+$IF QBTYPES_INTEGER=UNDEFINED THEN
+$LET QBTYPES_INTEGER=DEFINED
+
+$IF QBTYPES=UNDEFINED THEN
+$ERROR expected: 'qbcc.bi'
+$ENDIF
+
+'$INCLUDE:'Integer\if.bi'
+'$INCLUDE:'Integer\toString.bi'
+'$INCLUDE:'Integer\valueOf.bi'
+
+$ENDIF

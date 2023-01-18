@@ -1,0 +1,12 @@
+$IF QBTYPES_CHAR_EIGHT=UNDEFINED THEN
+$LET QBTYPES_CHAR_EIGHT=DEFINED
+
+$IF QBTYPES_CHAR=UNDEFINED THEN
+$ERROR expected: 'Char.bi'
+$ENDIF
+
+function Char.EIGHT$()
+	Char.EIGHT = Char.from(56)
+end function
+
+$ENDIF

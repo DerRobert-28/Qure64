@@ -1,0 +1,12 @@
+$IF QBTYPES_BYTE=UNDEFINED THEN
+$LET QBTYPES_BYTE=DEFINED
+
+$IF QBTYPES=UNDEFINED THEN
+$ERROR expected: 'qbcc.bi'
+$ENDIF
+
+'$INCLUDE:'Byte\if.bi'
+'$INCLUDE:'Byte\toString.bi'
+'$INCLUDE:'Byte\valueOf.bi'
+
+$ENDIF

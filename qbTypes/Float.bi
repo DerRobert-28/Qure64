@@ -1,0 +1,12 @@
+$IF QBTYPES_FLOAT=UNDEFINED THEN
+$LET QBTYPES_FLOAT=DEFINED
+
+$IF QBTYPES=UNDEFINED THEN
+$ERROR expected: 'qbcc.bi'
+$ENDIF
+
+'$INCLUDE:'Float\if.bi'
+'$INCLUDE:'Float\toString.bi'
+'$INCLUDE:'Float\valueOf.bi'
+
+$ENDIF

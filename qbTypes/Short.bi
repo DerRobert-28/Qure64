@@ -1,0 +1,12 @@
+$IF QBTYPES_SHORT=UNDEFINED THEN
+$LET QBTYPES_SHORT=DEFINED
+
+$IF QBTYPES=UNDEFINED THEN
+$ERROR expected: 'qbcc.bi'
+$ENDIF
+
+'$INCLUDE:'Short\if.bi'
+'$INCLUDE:'Short\toString.bi'
+'$INCLUDE:'Short\valueOf.bi'
+
+$ENDIF

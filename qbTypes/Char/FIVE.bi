@@ -1,0 +1,12 @@
+$IF QBTYPES_CHAR_FIVE=UNDEFINED THEN
+$LET QBTYPES_CHAR_FIVE=DEFINED
+
+$IF QBTYPES_CHAR=UNDEFINED THEN
+$ERROR expected: 'Char.bi'
+$ENDIF
+
+function Char.FIVE$()
+	Char.FIVE = Char.from(53)
+end function
+
+$ENDIF

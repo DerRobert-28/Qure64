@@ -1,0 +1,12 @@
+$IF QBCC_COLOR_VIOLET=UNDEFINED THEN
+$LET QBCC_COLOR_VIOLET=DEFINED
+
+$IF QBCC_COLOR=UNDEFINED THEN
+$ERROR expected: 'Color.bi'
+$ENDIF
+
+function Color.VIOLET&()
+	Color.VIOLET = Color.of(127, 0, 255)
+end function
+
+$ENDIF

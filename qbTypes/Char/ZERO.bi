@@ -1,0 +1,12 @@
+$IF QBTYPES_CHAR_ZERO=UNDEFINED THEN
+$LET QBTYPES_CHAR_ZERO=DEFINED
+
+$IF QBTYPES_CHAR=UNDEFINED THEN
+$ERROR expected: 'Char.bi'
+$ENDIF
+
+function Char.ZERO$()
+	Char.ZERO = Char.from(48)
+end function
+
+$ENDIF

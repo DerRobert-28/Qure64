@@ -1,0 +1,12 @@
+$IF QBTYPES_CHAR_SPACE=UNDEFINED THEN
+$LET QBTYPES_CHAR_SPACE=DEFINED
+
+$IF QBTYPES_CHAR=UNDEFINED THEN
+$ERROR expected: 'Char.bi'
+$ENDIF
+
+function Char.SPACE$()
+	Char.SPACE = Char.from(32)
+end function
+
+$ENDIF
