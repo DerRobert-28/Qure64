@@ -7,6 +7,8 @@ $ENDIF
 
 $ASSERTS:CONSOLE
 
-'$INCLUDE:'Assert/that.bi'
+sub Assert.that(expected%, message$)
+	_assert expected%, message$
+end sub
 
 $ENDIF
