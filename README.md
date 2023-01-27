@@ -1,4 +1,4 @@
-# QBCC
+# QB64CC
 
 Clean Code Features for QB64
 
@@ -84,7 +84,7 @@ Library for different utilities:
 ```
 cd <PathToYourQbc64Installation>\qb64\lib
 
-git clone https://github.com/DerRobert-28/qbcc.git
+git clone https://github.com/DerRobert-28/qb64cc.git
 ```
 
 <br>
@@ -94,14 +94,14 @@ git clone https://github.com/DerRobert-28/qbcc.git
 ```
 cd <PathToYourQbc64Installation>/qb64/lib
 
-git clone https://github.com/DerRobert-28/qbcc.git
+git clone https://github.com/DerRobert-28/qb64cc.git
 ```
 
 <br>
 
 ## Alternative installation:
 
-- [Download the ZIP file of the master branch to your PC](https://github.com/DerRobert-28/qbcc/archive/refs/heads/master.zip).
+- [Download the ZIP file of the master branch to your PC](https://github.com/DerRobert-28/qb64cc/archive/refs/heads/master.zip).
 
 - Copy the folder inside the ZIP file into your `qb64\lib` folder:
 
