@@ -2,7 +2,7 @@ $IF QB64CC_TYPES_STRING=UNDEFINED THEN
 $LET QB64CC_TYPES_STRING=DEFINED
 
 $IF QB64CC_TYPES=UNDEFINED THEN
-$ERROR expected: 'qbcc/System.bi'
+$ERROR expected: 'qb64cc/System.bi'
 $ENDIF
 
 '$INCLUDE:'String\append.bi'
