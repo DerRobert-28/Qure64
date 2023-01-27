@@ -1,17 +1,20 @@
-$IF QB64CC_SYSTEM_EXCEPTION=UNDEFINED THEN
-$LET QB64CC_SYSTEM_EXCEPTION=DEFINED
+$IF QB64CC_EXCEPTION=UNDEFINED THEN
+$LET QB64CC_EXCEPTION=DEFINED
 
-$IF QB64CC_SYSTEM=UNDEFINED THEN
-$ERROR expected: 'System.bi'
-$ENDIF
+function Exception.DuplicateDefinition%()
+	Exception.DuplicateDefinition = 10
+end function
 
-'type Exception
-'end type
+function Exception.IllegalFunctionCall%()
+	Exception.IllegalFunctionCall = 5
+end function
 
-'x$INCLUDE:'Exception/is.bi'
-'x$INCLUDE:'Exception/isDuplicateDefinition.bi'
-'x$INCLUDE:'Exception/isIllegalFunctionCall.bi'
-'x$INCLUDE:'Exception/isNoError.bi'
-'x$INCLUDE:'Exception/isOverflow.bi'
+function Exception.Overflow%()
+	Exception.Overflow = 6
+end function
+
+function Exception.toString$(this%)
+	Exception.toString = _errormessage$(this%)
+end function
 
 $ENDIF
