@@ -1,6 +1,6 @@
-# QB64CC
+# QURE64
 
-Clean Code Features for QB64
+Modern functionalities for QB64, e.g. CleanCode, OOP, etc.
 
 <br>
 
@@ -84,7 +84,7 @@ Library for different utilities:
 ```
 cd <PathToYourQbc64Installation>\qb64\lib
 
-git clone https://github.com/DerRobert-28/qb64cc.git
+git clone https://github.com/DerRobert-28/Qure64.git
 ```
 
 <br>
@@ -94,14 +94,14 @@ git clone https://github.com/DerRobert-28/qb64cc.git
 ```
 cd <PathToYourQbc64Installation>/qb64/lib
 
-git clone https://github.com/DerRobert-28/qb64cc.git
+git clone https://github.com/DerRobert-28/Qure64.git
 ```
 
 <br>
 
 ## Alternative installation:
 
-- [Download the ZIP file of the master branch to your PC](https://github.com/DerRobert-28/qb64cc/archive/refs/heads/master.zip).
+- [Download the ZIP file of the master branch to your PC](https://github.com/DerRobert-28/Qure64/archive/refs/heads/master.zip).
 
 - Copy the folder inside the ZIP file into your `qb64\lib` folder:
 
