@@ -1,0 +1,12 @@
+$IF QURE64_CORE_TRY=UNDEFINED THEN
+$LET QURE64_CORE_TRY=DEFINED
+
+$IF QURE64_CORE=UNDEFINED THEN
+$ERROR Expected: "core.bi"
+$ENDIF
+
+sub Try()
+	on error goto OnError
+end sub
+
+$ENDIF

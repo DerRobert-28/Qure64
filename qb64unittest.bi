@@ -1,8 +1,0 @@
-$IF QB64CC=UNDEFINED THEN
-$LET QB64CC=DEFINED
-
-'$INCLUDE:'qb64cc/System.bi'
-'$INCLUDE:'qb64cc/Types.bi'
-'$INCLUDE:'qb64cc/Utils.bi'
-
-$ENDIF

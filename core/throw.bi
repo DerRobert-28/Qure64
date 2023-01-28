@@ -1,0 +1,12 @@
+$IF QURE64_CORE_THROW=UNDEFINED THEN
+$LET QURE64_CORE_THROW=DEFINED
+
+$IF QURE64_CORE=UNDEFINED THEN
+$ERROR Expected: "core.bi"
+$ENDIF
+
+sub Throw(this as integer)
+	error this
+end sub
+
+$ENDIF

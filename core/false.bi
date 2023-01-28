@@ -1,0 +1,12 @@
+$IF QURE64_CORE_FALSE=UNDEFINED THEN
+$LET QURE64_CORE_FALSE=DEFINED
+
+$IF QURE64_CORE=UNDEFINED THEN
+$ERROR Expected: "core.bi"
+$ENDIF
+
+function False%()
+	False = 0
+end function
+
+$ENDIF

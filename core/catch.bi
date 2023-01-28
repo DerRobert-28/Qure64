@@ -1,0 +1,12 @@
+$IF QURE64_CORE_CATCH=UNDEFINED THEN
+$LET QURE64_CORE_CATCH=DEFINED
+
+$IF QURE64_CORE=UNDEFINED THEN
+$ERROR Expected: "core.bi"
+$ENDIF
+
+sub Catch(this as integer)
+	this = IOresult
+end sub
+
+$ENDIF
