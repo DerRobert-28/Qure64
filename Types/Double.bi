@@ -1,12 +1,16 @@
 $IF QB64CC_TYPES_DOUBLE=UNDEFINED THEN
 $LET QB64CC_TYPES_DOUBLE=DEFINED
 
-$IF QB64CC_TYPES=UNDEFINED THEN
-$ERROR expected: 'qbcc.bi'
-$ENDIF
+function Double.if#(this%%, first#, second#)
+	if this%% then Double.if = first# else Double.if = second#
+end function
 
-'$INCLUDE:'Double\if.bi'
-'$INCLUDE:'Double\toString.bi'
-'$INCLUDE:'Double\valueOf.bi'
+function Double.toString$(this#)
+	Double.toString = ltrim$(str$(this#))
+end function
+
+function Double.valueOf#(this$)
+	Double.valueOf = val(ltrim$(this$))
+end function
 
 $ENDIF

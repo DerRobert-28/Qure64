@@ -5,6 +5,6 @@ $IF QB64CC_SYSTEM=UNDEFINED THEN
 $ERROR expected:'System.bi'
 $ENDIF
 
-'x$INCLUDE:'Arrays/*.bi'
+'more content coming soon ...
 
 $ENDIF
