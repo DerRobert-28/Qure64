@@ -241,8 +241,7 @@ function String.toUpper$(this$)
 end function
 
 function String.trim$(this$)
-	'String.trim = ltrim$(rtrim$(this$))
-	String.trim = _trim$(this$)
+	String.trim = ltrim$(rtrim$(this$))
 end function
 
 function String.unquote$(this$)

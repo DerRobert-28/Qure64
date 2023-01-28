@@ -51,16 +51,16 @@ function Strings.indexOfIgnoreCase&(array$(), item$)
 	Strings.indexOfIgnoreCase = result&
 end function
 
-function Strings.lastIndexOf&(array() as string, item as string)
+function Strings.lastIndexOf&(array$() as string, item$)
 	dim each&, result&
-	result& = ubound(array) + 1
-	for each& = result& - 1 to lbound(array) step -1
-		if Strings.areEqual(array(each&), item) then
+	result& = ubound(array$) + 1
+	for each& = result& - 1 to lbound(array$) step -1
+		if Strings.areEqual(array$(each&), item$) then
 			result& = each&
 			exit for
 		endif
 	next
-	Strings.lastIndexOf = result
+	Strings.lastIndexOf = result&
 end function
 
 function Strings.lastIndexOfIgnoreCase&(array$(), item$)
