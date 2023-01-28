@@ -1,12 +1,16 @@
 $IF QB64CC_TYPES_INTEGER=UNDEFINED THEN
 $LET QB64CC_TYPES_INTEGER=DEFINED
 
-$IF QB64CC_TYPES=UNDEFINED THEN
-$ERROR expected: 'qb64cc.bi'
-$ENDIF
+function Integer.if&&(this%%, first&&, second&&)
+	if this%% then Integer.if = first&& else Integer.if = second&&
+end function
 
-'$INCLUDE:'Integer\if.bi'
-'$INCLUDE:'Integer\toString.bi'
-'$INCLUDE:'Integer\valueOf.bi'
+function Integer.toString$(this&&)
+	Integer.toString = ltrim$(str$(this&&))
+end function
+
+function Integer.valueOf&&(this$)
+	Integer.valueOf = val(ltrim$(this$))
+end function
 
 $ENDIF

@@ -1,12 +1,16 @@
 $IF QB64CC_TYPES_LONG=UNDEFINED THEN
 $LET QB64CC_TYPES_LONG=DEFINED
 
-$IF QB64CC_TYPES=UNDEFINED THEN
-$ERROR expected: 'qb64cc.bi'
-$ENDIF
+function Long.if&(this%%, first&, second&)
+	if this%% then Long.if = first& else Long.if = second&
+end function
 
-'$INCLUDE:'Long\if.bi'
-'$INCLUDE:'Long\toString.bi'
-'$INCLUDE:'Long\valueOf.bi'
+function Long.toString$(this&)
+	Long.toString = ltrim$(str$(this&))
+end function
+
+function Long.valueOf&(this$)
+	Long.valueOf = val(ltrim$(this$))
+end function
 
 $ENDIF

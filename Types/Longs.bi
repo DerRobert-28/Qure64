@@ -1,13 +1,41 @@
 $IF QB64CC_TYPES_LONGS=UNDEFINED THEN
 $LET QB64CC_TYPES_LONGS=DEFINED
 
-$IF QB64CC_TYPES=UNDEFINED THEN
-$ERROR expected: 'qb64cc.bi'
-$ENDIF
+function Longs.areEqual%%(this&, value&)
+	Longs.areEqual = (this& = value&)
+end function
 
-'$INCLUDE:'Longs\areEqual.bi'
-'$INCLUDE:'Longs\contain.bi'
-'$INCLUDE:'Longs\indexOf.bi'
-'$INCLUDE:'Longs\lastIndexOf.bi'
+function Longs.contain%%(this&(), value&)
+	dim each&, result%%
+	for each& = lbound(this&) to ubound(this&)
+		result%% = Longs.areEqual(this&(each&), value&)
+		if result%% then exit for
+	next
+	Longs.contain = result%%
+end function
+
+function Longs.indexOf&(this&(), value&)
+	dim each&, result&
+	result& = lbound(this&) - 1
+	for each& = result& + 1 to ubound(this&)
+		if Longs.areEqual(this&(each&), value&) then
+			result& = each&
+			exit for
+		endif
+	next
+	Longs.indexOf = result&
+end function
+
+function Longs.lastIndexOf&(this&(), value&)
+	dim each&, result&
+	result& = ubound(this&) + 1
+	for each& = result& - 1 to lbound(this&) step -1
+		if Longs.areEqual(this&(each&), value&) then
+			result& = each&
+			exit for
+		endif
+	next
+	Longs.lastIndexOf = result&
+end function
 
 $ENDIF

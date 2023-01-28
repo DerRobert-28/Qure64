@@ -1,12 +1,16 @@
 $IF QB64CC_TYPES_REAL=UNDEFINED THEN
 $LET QB64CC_TYPES_REAL=DEFINED
 
-$IF QB64CC_TYPES=UNDEFINED THEN
-$ERROR expected: 'qb64cc.bi'
-$ENDIF
+function Real.if##(this%%, first##, second##)
+	if this%% then Real.if = first## else Real.if = second##
+end function
 
-'$INCLUDE:'Real\if.bi'
-'$INCLUDE:'Real\toString.bi'
-'$INCLUDE:'Real\valueOf.bi'
+function Real.toString$(this##)
+	Real.toString = ltrim$(str$(this##))
+end function
+
+function Real.valueOf#(this$)
+	Real.valueOf = val(ltrim$(this$))
+end function
 
 $ENDIF

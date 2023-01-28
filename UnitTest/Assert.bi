@@ -7,8 +7,8 @@ $ENDIF
 
 $ASSERTS:CONSOLE
 
-sub Assert.that(expected%, message$)
-	_assert expected%, message$
+sub Assert.that(expected%%, message$)
+	_assert expected%%, message$
 end sub
 
 $ENDIF

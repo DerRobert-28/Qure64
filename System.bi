@@ -8,12 +8,12 @@ Options:
 	option _explicitarray
 
 Declares:
-	declare function False%()
-	declare function True%()
 	declare sub Catch(this%)
 	declare sub Finally()
 	declare sub Throw(this%)
 	declare sub Try()
+	declare function False%()
+	declare function True%()
 	'****************************************
 	'**                                    **
 	'**  This function has to be defined:  **
@@ -42,14 +42,6 @@ end
 '$INCLUDE:'System/Console.bi'
 '$INCLUDE:'System/Exception.bi'
 
-function False%()
-	False = 0
-end function
-
-function True%()
-	True = not False
-end function
-
 sub Catch(this%)
 	shared LastExceptionCode%
 	this% = LastExceptionCode%
@@ -66,5 +58,14 @@ end sub
 sub Try()
 	on error goto HandleException
 end sub
+
+function False%()
+	False = 0
+end function
+
+function True%()
+	True = not False
+end function
+
 
 $ENDIF

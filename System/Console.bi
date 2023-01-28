@@ -10,9 +10,9 @@ function Console.Background$(this%, value$)
 	Console.Background = value$
 end function
 
-function Console.Clear$(value$)
+function Console.clear$(value$)
 	cls
-	Console.Clear = value$
+	Console.clear = value$
 end function
 
 function Console.Foreground$(this%, value$)
@@ -20,46 +20,46 @@ function Console.Foreground$(this%, value$)
 	Console.Foreground = value$
 end function
 
-function Console.NewLine$()
-	Console.NewLine
+function Console.newLine$()
+	Console.newLine
 end function
 
-function Console.Read$()
+function Console.read$()
 	dim result$
 	line input; result$
-	Console.Read = result$
+	Console.read = result$
 end function
 
-function Console.ReadKey$()
-	Console.ReadKey = inkey$
+function Console.readKey$()
+	Console.readKey = inkey$
 end function
 
-function Console.ReadLine$()
+function Console.readLine$()
 	dim result$
 	line input result$
-	Console.ReadLine = result$
+	Console.readLine = result$
 end function
 
-function Console.SetColor$(foreground%, background%, value$)
-	Console.SetColor foreground%, background%
-	Console.SetColor = value$
+function Console.setColor$(foreground%, background%, value$)
+	Console.setColor foreground%, background%
+	Console.setColor = value$
 end function
 
-function Console.WaitKey$()
+function Console.waitKey$()
 	dim result$
 	result$ = ""
 	while result$ = ""
 		result$ = inkey$
 	wend
-	Console.WaitKey = result$
+	Console.waitKey = result$
 end function
 
-function Console.Write$(this$)
-	Console.Write this$
+function Console.write$(this$)
+	Console.write this$
 end function
 
-function Console.WriteLine$(this$)
-	Console.WriteLine this$
+function Console.writeLine$(this$)
+	Console.writeLine this$
 end function
 
 '	===========
@@ -70,7 +70,7 @@ sub Console.Background(this%)
 	color (_defaultcolor and 15) + ((this% and 8) * 2), this% and 7
 end sub
 
-sub Console.Clear(this%)
+sub Console.clear(this%)
 	Console.Background this%
 	cls
 end sub
@@ -79,35 +79,35 @@ sub Console.Foreground(this%)
 	color (_defaultcolor and 16) + (this% and 15)
 end sub
 
-sub Console.NewLine()
+sub Console.newLine()
 	print
 end sub
 
-sub Console.Read()
+sub Console.read()
 	dim dummy$
-	dummy$ = Console.Read
+	dummy$ = Console.read
 end sub
 
 sub Console.readLine()
 	dim dummy$
-	dummy$ = Console.ReadLine
+	dummy$ = Console.readLine
 end sub
 
-sub Console.SetColor(foreground%, background%)
+sub Console.setColor(foreground%, background%)
 	Console.Foreground foreground%
 	Console.Background background%
 end sub
 
-sub Console.WaitKey()
+sub Console.waitKey()
 	while inkey$ = ""
 	wend
 end sub
 
-sub Console.Write(this$)
+sub Console.write(this$)
 	print this$;
 end sub
 
-sub Console.WriteLine(this$)
+sub Console.writeLine(this$)
 	print this$
 end sub
 
