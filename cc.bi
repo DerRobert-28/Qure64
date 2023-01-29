@@ -1,11 +1,13 @@
 $IF QURE64_CC=UNDEFINED THEN
 $LET QURE64_CC=DEFINED
 
+'--------------------------
+'$INCLUDE:'cc/variables.bi'
+'--------------------------
 '$INCLUDE:'core.bi'
-
-
-'x$INCLUDE:'qb64cc/System.bi'
-'x$INCLUDE:'qb64cc/Types.bi'
-'x$INCLUDE:'qb64cc/Utils.bi'
+'--------------------------
+'$INCLUDE:'cc/exception.bi'
+'$INCLUDE:'cc/boolean.bi'
+'--------------------------
 
 $ENDIF

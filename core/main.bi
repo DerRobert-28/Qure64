@@ -1,30 +1,28 @@
 $IF QURE64_CORE_MAIN=UNDEFINED THEN
 $LET QURE64_CORE_MAIN=DEFINED
 
-Options:
-	_blink off
-	option base 0
-	option _explicit
-	option _explicitarray
+'================]  DECLARE  [================'
 
-Declares:
-	declare function Main%(argc as integer, argv() as string)
+declare function Main%(argc%, argv$())
 
-Variables:
-	dim shared IOresult as integer
-	dim argc as integer
-	dim argv(-1 to _commandcount - 1) as string
-	dim each as integer
+'================]  OPTION  [================'
 
-Begin:
-	argc = ubound(argv)
-	for each = 0 TO 255: _mapunicode each to each: next
-	for each = 1 to argc: argv(each - 1) = command$(each): next
-	system Main(argc, argv())
-End
+_blink off
+option base 0
+option _explicit
+option _explicitarray
 
-OnError:
-	IOresult = err
-resume next
+'================]  DIM  [================'
+
+dim argc%
+dim argv$(-1 to _commandcount - 1)
+dim each%
+
+'================]  MAIN  [================'
+
+argc% = ubound(argv$)
+for each% = 0 TO 255: _mapunicode each% to each%: next
+for each% = 1 to argc%: argv$(each% - 1) = command$(each%): next
+system Main%(argc%, argv$())
 
 $ENDIF
