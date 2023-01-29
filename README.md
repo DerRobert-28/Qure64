@@ -1,4 +1,4 @@
-# QURE64
+# Qure64
 
 Modern functionalities for QB64, e.g. CleanCode, OOP, etc.
 
