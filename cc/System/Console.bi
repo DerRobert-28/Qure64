@@ -1,10 +1,6 @@
 $IF QURE64_CC_SYSTEM_CONSOLE=UNDEFINED THEN
 $LET QURE64_CC_SYSTEM_CONSOLE=DEFINED
 
-$IF QURE64_CC=UNDEFINED THEN
-$ERROR Expected: 'cc.bi'
-$ENDIF
-
 '================]  SUB  [================'
 
 sub Console.Background(this%)

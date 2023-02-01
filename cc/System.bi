@@ -1,12 +1,8 @@
 $IF QURE64_CC_SYSTEM=UNDEFINED THEN
 $LET QURE64_CC_SYSTEM=DEFINED
 
-$IF QURE64_CC=UNDEFINED THEN
-$ERROR Expected: 'cc.bi'
-$ENDIF
-
-'$INCLUDE:'system/Colors.bi'
-'$INCLUDE:'system/Console.bi'
-'$INCLUDE:'system/Exceptions.bi'
+'$INCLUDE:'System/Color.bi'
+'$INCLUDE:'System/Console.bi'
+'$INCLUDE:'System/Exception.bi'
 
 $ENDIF

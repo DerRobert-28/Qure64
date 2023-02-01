@@ -1,0 +1,8 @@
+$IF QURE64_CC_SYSTEM_COLOR_GREY=UNDEFINED THEN
+$LET QURE64_CC_SYSTEM_COLOR_GREY=DEFINED
+
+function Color.Grey&()
+	Color.Grey = Color.of(127, 127, 127)
+end function
+
+$ENDIF
