@@ -1,6 +1,10 @@
 $IF QURE64_CC_SYSTEM_COLORS=UNDEFINED THEN
 $LET QURE64_CC_SYSTEM_COLORS=DEFINED
 
+$IF QURE64_CC=UNDEFINED THEN
+$ERROR Expected: 'cc.bi'
+$ENDIF
+
 '================]  FUNCTION  [================'
 
 function Color.Black&()

@@ -1,6 +1,10 @@
 $IF QURE64_CC_SYSTEM_EXCEPTIONS=UNDEFINED THEN
 $LET QURE64_CC_SYSTEM_EXCEPTIONS=DEFINED
 
+$IF QURE64_CC=UNDEFINED THEN
+$ERROR Expected: 'cc.bi'
+$ENDIF
+
 '================]  FUNCTION  [================'
 
 function Exception.DuplicateDefinition%()
