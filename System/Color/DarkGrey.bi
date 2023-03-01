@@ -1,0 +1,8 @@
+$IF QURE64_SYSTEM_COLOR_DARKGREY=UNDEFINED THEN
+$LET QURE64_SYSTEM_COLOR_DARKGREY=DEFINED
+
+function Color.DarkGrey&()
+	Color.DarkGrey = Color.of(85, 85, 85)
+end function
+
+$ENDIF

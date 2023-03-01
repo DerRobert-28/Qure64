@@ -1,0 +1,8 @@
+$IF QURE64_SYSTEM_COLOR_VIOLET=UNDEFINED THEN
+$LET QURE64_SYSTEM_COLOR_VIOLET=DEFINED
+
+function Color.Violet&()
+	Color.Violet = Color.of(127, 0, 255)
+end function
+
+$ENDIF
