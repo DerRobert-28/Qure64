@@ -1,0 +1,8 @@
+$IF QURE64_CC_SYSTEM_COLOR_DARKYELLOW=UNDEFINED THEN
+$LET QURE64_CC_SYSTEM_COLOR_DARKYELLOW=DEFINED
+
+function Color.DarkYellow&()
+	Color.DarkYellow = Color.of(127, 127, 0)
+end function
+
+$ENDIF

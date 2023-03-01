@@ -1,0 +1,8 @@
+$IF QURE64_CC_SYSTEM_EXCEPTION_DUPLICATED_46=UNDEFINED THEN
+$LET QURE64_CC_SYSTEM_EXCEPTION_DUPLICATED_46=DEFINED
+
+function Exception.DuplicateDefinition%()
+	Exception.DuplicateDefinition = 10
+end function
+
+$ENDIF

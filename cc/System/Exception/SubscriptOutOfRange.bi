@@ -1,0 +1,8 @@
+$IF QURE64_CC_SYSTEM_EXCEPTION_SUBSCRIPTO_46=UNDEFINED THEN
+$LET QURE64_CC_SYSTEM_EXCEPTION_SUBSCRIPTO_46=DEFINED
+
+function Exception.SubscriptOutOfRange%()
+	Exception.SubscriptOutOfRange = 9
+end function
+
+$ENDIF
