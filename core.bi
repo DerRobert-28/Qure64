@@ -19,10 +19,6 @@ dim argv$(-1 to _commandcount - 1)
 dim each%
 dim LASTEXCEPTION%
 
-'================]  REDIM  [================'
-
-redim OBJECTTABLE$(0)
-
 '================]  MAIN  [================'
 
 argc% = ubound(argv$)
@@ -36,46 +32,14 @@ EXCEPTIONHANDLER:
 	LASTEXCEPTION% = err
 resume next
 
-'================]  FUNCTION  [================'
+'================]  INCLUDE  [================'
 
-function catch%()
-	shared LASTEXCEPTION%
-	catch% = LASTEXCEPTION%
-end function
-
-function malloc&(mallocTable$(), item$)
-	dim currentItem&, each&, lastItem&
-	lastItem& = ubound(mallocTable$) + 1
-	currentItem& = lastItem&
-	for each& = 1 to lastItem& - 1
-		if mallocTable$(each&) = item$ then
-			currentItem& = each&
-			exit for
-		endif
-	next
-	if(currentItem& = lastItem&) then redim _preserve mallocTable$(currentItem&)
-	mallocTable$(currentItem&) = item$
-	malloc& = currentItem&
-end function
-
-function new&(this$)
-	shared OBJECTTABLE$()
-	new = malloc(OBJECTTABLE$(), this$)
-end function
-
-'================]  SUB  [================'
-
-sub catch(this%)
-	shared LASTEXCEPTION%
-	this% = LASTEXCEPTION%
-end sub
-
-sub finally()
-	on error goto 0
-end sub
-
-sub try()
-	on error goto EXCEPTIONHANDLER
-end sub
+'$INCLUDE:'./core/catch.bi'
+'$INCLUDE:'./core/delete.bi'
+'$INCLUDE:'./core/finally.bi'
+'$INCLUDE:'./core/malloc.bi'
+'$INCLUDE:'./core/new.bi'
+'$INCLUDE:'./core/try.bi'
+'$INCLUDE:'./core/valueOf.bi'
 
 $ENDIF
