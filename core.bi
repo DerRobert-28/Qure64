@@ -34,12 +34,16 @@ resume next
 
 '================]  INCLUDE  [================'
 
-'$INCLUDE:'./core/catch.bi'
-'$INCLUDE:'./core/delete.bi'
-'$INCLUDE:'./core/finally.bi'
+'$INCLUDE:'./core/random.bi'
+
 '$INCLUDE:'./core/malloc.bi'
+
+'$INCLUDE:'./core/delete.bi'
 '$INCLUDE:'./core/new.bi'
-'$INCLUDE:'./core/try.bi'
 '$INCLUDE:'./core/valueOf.bi'
+
+'$INCLUDE:'./core/try.bi'
+'$INCLUDE:'./core/catch.bi'
+'$INCLUDE:'./core/finally.bi'
 
 $ENDIF

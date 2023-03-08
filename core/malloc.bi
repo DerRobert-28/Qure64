@@ -1,76 +1,84 @@
+$IF QURE64_CORE=UNDEFINED THEN
+$ERROR 'malloc.bi' requires 'core.bi'
+$ENDIF
+
+$IF QURE64_CORE_RANDOM=UNDEFINED THEN
+$ERROR 'malloc.bi' requires 'random.bi'
+$ENDIF
+
 $IF QURE64_CORE_MALLOC=UNDEFINED THEN
 $LET QURE64_CORE_MALLOC=DEFINED
 
-function malloc$(this$, value$)
-	static mallocTable$
+function core.malloc$(this$, value$)
+	static mallocAuthId&, mallocTable$
+	while mallocAuthId& = 0
+		mallocAuthId& = core.malloc.authId(core.random.long(0))
+	wend
 	select case ltrim$(rtrim$(lcase$(this$)))
-		case "": malloc = ""
-		case "delete": malloc = malloc.delete(malloc.authId(0), mallocTable$, value$)
-		case "get": malloc = malloc.get(malloc.authId(0), mallocTable$, value$)
-		case "put": malloc = malloc.put(malloc.authId(0), mallocTable$, value$)
+		case "": core.malloc = ""
+		case "delete": core.malloc = core.malloc.delete(mallocAuthId&, mallocTable$, value$)
+		case "get": core.malloc = core.malloc.get(mallocAuthId&, mallocTable$, value$)
+		case "put": core.malloc = core.malloc.put(mallocAuthId&, mallocTable$, value$)
 		case else: error 5
 	end select
 end function
 
-function malloc.authId&(compare&)
+function core.malloc.authId&(compare&)
 	static authId&
-	dim a%, b%, c%, d%
-	if compare& then
-		malloc.authId = (authId& = compare&)
+	if authId& then
+		core.malloc.authId = (authId& = compare&)
+	elseif compare& then
+		authId& = core.random.long(0)
+		core.malloc.authId = authId&
 	else
-		randomize timer
-		while authId& = 0
-			a% = int(rnd * 256): b% = int(rnd * 256)	
-			c% = int(rnd * 256): d% = int(rnd * 256)	
-			authId& = cvl(chr$(a%) + chr$(b%) + chr$(c%) + chr$(d%))
-		wend
-		malloc.authId = authId&
+		core.malloc.authId = 0
+		error 5
 	endif
 end function
 
-function malloc.delete$(authId&, mallocTable$, value$)	
+function core.malloc.delete$(authId&, mallocTable$, value$)	
 	dim hashCode&, newTable$, size&, this$, thisHashCode&, thisValue$
-	if malloc.authId&(authId&) then
-		hashCode& = malloc.getHash(authId&, value$)
+	if core.malloc.authId&(authId&) then
+		hashCode& = core.malloc.getHash(authId&, value$)
 		if hashCode& then
 			this$ = mallocTable$
 			newTable$ = ""
 			while len(this$)
-				thisHashCode& = malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
-				size& = malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
+				thisHashCode& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
+				size& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
 				thisValue$ = left$(this$, size&): this$ = mid$(this$, size& + 1)		
 				if(thisHashCode& = hashCode&) then
 					mallocTable$ = newTable$ + this$
-					malloc.delete = mkl$(thisHashCode&)
+					core.malloc.delete = mkl$(thisHashCode&)
 					exit function
 				endif
-				newTable$ = newTable$ + malloc.valueOf(authId&, thisHashCode&, thisValue$)
+				newTable$ = newTable$ + core.malloc.valueOf(authId&, thisHashCode&, thisValue$)
 			wend	
-			malloc.delete = ""
+			core.malloc.delete = ""
 			error 7
 		else
-			malloc.delete = ""
+			core.malloc.delete = ""
 			error 5
 		endif
 	else
-		malloc.delete = ""
+		core.malloc.delete = ""
 		error 5
 	endif
 end function
 
-function malloc.getHash&(authId&, this$)
-	if malloc.authId(authId&) then
-		malloc.getHash = cvl(left$(this$ + mkl$(0), 4))
+function core.malloc.getHash&(authId&, this$)
+	if core.malloc.authId(authId&) then
+		core.malloc.getHash = cvl(left$(this$ + mkl$(0), 4))
 	else
-		malloc.getHash = 0
+		core.malloc.getHash = 0
 		error 5
 	endif
 end function
 
-function malloc.hashCode&(authId&, kind%)
+function core.malloc.hashCode&(authId&, kind%)
 	static hashTable$
 	dim a%, b%, c%, d%, i&, hashCode$
-	if malloc.authId(authId&) then
+	if core.malloc.authId(authId&) then
 		if kind% then
 			randomize timer
 			do
@@ -85,73 +93,73 @@ function malloc.hashCode&(authId&, kind%)
 				next
 			loop while hashCode$ = mkl$(0)
 			hashTable$ = hashTable$ + hashCode$
-			malloc.hashCode = cvl(hashCode$)
+			core.malloc.hashCode = cvl(hashCode$)
 		elseif len(hashTable$) < 4 then
 			hashCode$ = left$(hashTable$ + mkl$(0), 4)
-			malloc.hashCode = cvl(hashCode$)
+			core.malloc.hashCode = cvl(hashCode$)
 		else
 			hashCode$ = right$(hashTable$, 4)
-			malloc.hashCode = cvl(hashCode$)
+			core.malloc.hashCode = cvl(hashCode$)
 		endif
 	else
-		malloc.hashCode = 0
+		core.malloc.hashCode = 0
 		error 5
 	endif
 end function
 
-function malloc.get$(authId&, mallocTable$, value$)
+function core.malloc.get$(authId&, mallocTable$, value$)
 	dim hashCode&, size&, this$, thisHashCode&, thisValue$
-	if malloc.authId(authId&) then
-		hashCode& = malloc.getHash(authId&, value$)
+	if core.malloc.authId(authId&) then
+		hashCode& = core.malloc.getHash(authId&, value$)
 		if hashCode& then
 			this$ = mallocTable$
 			while len(this$)
-				thisHashCode& = malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
-				size& = malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
+				thisHashCode& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
+				size& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
 				thisValue$ = left$(this$, size&): this$ = mid$(this$, size& + 1)
 				if(thisHashCode& = hashCode&) then
-					malloc.get = thisValue$
+					core.malloc.get = thisValue$
 					exit function
 				endif
 			wend
-			malloc.get = ""
+			core.malloc.get = ""
 			error 7
 		else
-			malloc.get = ""
+			core.malloc.get = ""
 			error 5
 		endif
 	else
-		malloc.get = ""
+		core.malloc.get = ""
 		error 5
 	endif
 end function
 
-function malloc.put$(authId&, mallocTable$, value$)
+function core.malloc.put$(authId&, mallocTable$, value$)
 	dim i&, size&, this$, thisHashCode&, thisValue$
-	if malloc.authId(authId&) then
+	if core.malloc.authId(authId&) then
 		this$ = mallocTable$
 		while len(this$)
-			thisHashCode& = malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
-			size& = malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
+			thisHashCode& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
+			size& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
 			thisValue$ = left$(this$, size&): this$ = mid$(this$, size& + 1)
 			if(thisValue$ = value$) then
-				malloc.put = mkl$(thisHashCode&)
+				core.malloc.put = mkl$(thisHashCode&)
 				exit function
 			endif
 		wend
-		mallocTable$ = mallocTable$ + malloc.valueOf(authId&, malloc.hashCode(authId&, 1), value$)
-		malloc.put = mkl$(malloc.hashCode(authId&, 0))
+		mallocTable$ = mallocTable$ + core.malloc.valueOf(authId&, core.malloc.hashCode(authId&, 1), value$)
+		core.malloc.put = mkl$(core.malloc.hashCode(authId&, 0))
 	else
-		malloc.put = ""
+		core.malloc.put = ""
 		error 5
 	endif
 end function
 
-function malloc.valueOf$(authId&, hashCode&, value$)
-	if malloc.authId(authId&) then
-		malloc.valueOf = mkl$(hashCode&) + mkl$(len(value$)) + value$
+function core.malloc.valueOf$(authId&, hashCode&, value$)
+	if core.malloc.authId(authId&) then
+		core.malloc.valueOf = mkl$(hashCode&) + mkl$(len(value$)) + value$
 	else
-		malloc.valueOf = ""
+		core.malloc.valueOf = ""
 		error 5
 	endif
 end function
