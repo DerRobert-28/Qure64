@@ -17,7 +17,7 @@ option _explicitarray
 dim argc%
 dim argv$(-1 to _commandcount - 1)
 dim each%
-dim LASTEXCEPTION%
+dim LastException%
 
 '================]  MAIN  [================'
 
@@ -28,8 +28,8 @@ system Main%(argc%, argv$())
 
 '================]  EXCEPT  [================'
 
-EXCEPTIONHANDLER:
-	LASTEXCEPTION% = err
+ExceptionHandler:
+	LastException% = err
 resume next
 
 '================]  INCLUDE  [================'
