@@ -10,72 +10,11 @@ Yet it already provides a whole bunch of Clean Code features.
 
 <br>
 
-## Arrays.bi
-
-*Yet nothing inside here.*
-
-<br>
-
-## Lists.bi
-
-Contains the following features:
-
-- `TList`: Basic functionalities for (numeric) arrays and lists.
-
-- `LongList`: Functionalities especially for `Long` arrays and lists.
-
-- `StringList`: Functionalities for `String` arrays and lists.
-
-<br>
-
 ## System.bi
 
-This file has to be included first by
-- `rem $include:'lib/qbcc/System.bi'`
-- or `'$include:'lib/qbcc/System.bi'`
-
-
-<br>
-
-## Types.bi
-
-Contains the basic functionalities for data types:
-
-- `Boolean`
-
-- `Byte`
-
-- `Char`
-
-- `Double`
-
-- `Float`
-
-- `Integer`
-
-- `Long`
-
-- `Real`
-
-- `Short`
-
-- `String`
-
-<br>
-
-## UnitTest.bi
-
-Library for unit testing:
-
-- `Assert.bi`: basic unit testing
-
-<br>
-
-## Utils.bi
-
-Library for different utilities:
-
-- `Math.bi`: mathematical functionalities
+This file has to be included first by one of these:
+- [`rem`|`'`] `$include:'lib/qure64/System.bi'`
+- [`rem`|`'`] `$include:'lib/qure64.bi'`
 
 <br>
 
