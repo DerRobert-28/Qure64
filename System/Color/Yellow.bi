@@ -1,0 +1,8 @@
+$IF QURE64_SYSTEM_COLOR_YELLOW=UNDEFINED THEN
+$LET QURE64_SYSTEM_COLOR_YELLOW=DEFINED
+
+function Color.Yellow&()
+	Color.Yellow = Color.of(255, 255, 0)
+end function
+
+$ENDIF
