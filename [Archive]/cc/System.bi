@@ -1,8 +1,0 @@
-$IF QURE64_CC_SYSTEM=UNDEFINED THEN
-$LET QURE64_CC_SYSTEM=DEFINED
-
-'$INCLUDE:'System/Color.bi'
-'$INCLUDE:'System/Console.bi'
-'$INCLUDE:'System/Exception.bi'
-
-$ENDIF

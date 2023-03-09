@@ -1,8 +1,0 @@
-$IF QURE64_CC_SYSTEM_COLOR_BLACK=UNDEFINED THEN
-$LET QURE64_CC_SYSTEM_COLOR_BLACK=DEFINED
-
-function Color.Black&()
-	Color.Black = Color.of(0, 0, 0)
-end function
-
-$ENDIF

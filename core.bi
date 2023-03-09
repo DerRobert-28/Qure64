@@ -24,6 +24,7 @@ dim LastException%
 argc% = ubound(argv$)
 for each% = 0 TO 255: _mapunicode each% to each%: next
 for each% = 1 to argc%: argv$(each% - 1) = command$(each%): next
+call malloc("init", "")
 system Main%(argc%, argv$())
 
 '================]  EXCEPT  [================'

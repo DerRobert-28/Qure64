@@ -9,76 +9,93 @@ $ENDIF
 $IF QURE64_CORE_MALLOC=UNDEFINED THEN
 $LET QURE64_CORE_MALLOC=DEFINED
 
-function core.malloc$(this$, value$)
+'================]  PUBLIC  [================'
+
+function malloc$(this$, value$)
 	static mallocAuthId&, mallocTable$
-	while mallocAuthId& = 0
-		mallocAuthId& = core.malloc.authId(core.random.long(0))
-	wend
 	select case ltrim$(rtrim$(lcase$(this$)))
-		case "": core.malloc = ""
-		case "delete": core.malloc = core.malloc.delete(mallocAuthId&, mallocTable$, value$)
-		case "get": core.malloc = core.malloc.get(mallocAuthId&, mallocTable$, value$)
-		case "put": core.malloc = core.malloc.put(mallocAuthId&, mallocTable$, value$)
-		case else: error 5
+		case ""
+			malloc = mkl$(0)
+		case "delete"
+			malloc = malloc.service.delete(mallocAuthId&, mallocTable$, value$)
+		case "get"
+			malloc = malloc.service.get(mallocAuthId&, mallocTable$, value$)
+		case "init"
+			while mallocAuthId& = 0
+				mallocAuthId& = malloc.service.authId(core.random.long(0))
+			wend
+			malloc = mkl$(0)
+		case "put"
+			malloc = malloc.service.put(mallocAuthId&, mallocTable$, value$)
+		case else
+			malloc = ""
+			error 5
 	end select
 end function
 
-function core.malloc.authId&(compare&)
+sub malloc(this$, value$)
+	dim dummy$
+	dummy$ = malloc(this$, value$)
+end sub
+
+'================]  PRIVATE  [================'
+
+function malloc.service.authId&(compare&)
 	static authId&
 	if authId& then
-		core.malloc.authId = (authId& = compare&)
+		malloc.service.authId = (authId& = compare&)
 	elseif compare& then
 		authId& = core.random.long(0)
-		core.malloc.authId = authId&
+		malloc.service.authId = authId&
 	else
-		core.malloc.authId = 0
+		malloc.service.authId = 0
 		error 5
 	endif
 end function
 
-function core.malloc.delete$(authId&, mallocTable$, value$)	
+function malloc.service.delete$(authId&, mallocTable$, value$)	
 	dim hashCode&, newTable$, size&, this$, thisHashCode&, thisValue$
-	if core.malloc.authId&(authId&) then
-		hashCode& = core.malloc.getHash(authId&, value$)
+	if malloc.service.authId(authId&) then
+		hashCode& = malloc.service.getHashCode(authId&, value$)
 		if hashCode& then
 			this$ = mallocTable$
 			newTable$ = ""
 			while len(this$)
-				thisHashCode& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
-				size& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
+				thisHashCode& = malloc.service.getHashCode(authId&, this$): this$ = mid$(this$, 5)
+				size& = malloc.service.getHashCode(authId&, this$): this$ = mid$(this$, 5)
 				thisValue$ = left$(this$, size&): this$ = mid$(this$, size& + 1)		
 				if(thisHashCode& = hashCode&) then
 					mallocTable$ = newTable$ + this$
-					core.malloc.delete = mkl$(thisHashCode&)
+					malloc.service.delete = mkl$(thisHashCode&)
 					exit function
 				endif
-				newTable$ = newTable$ + core.malloc.valueOf(authId&, thisHashCode&, thisValue$)
+				newTable$ = newTable$ + malloc.service.valueOf(authId&, thisHashCode&, thisValue$)
 			wend	
-			core.malloc.delete = ""
+			malloc.service.delete = ""
 			error 7
 		else
-			core.malloc.delete = ""
+			malloc.service.delete = ""
 			error 5
 		endif
 	else
-		core.malloc.delete = ""
+		malloc.service.delete = ""
 		error 5
 	endif
 end function
 
-function core.malloc.getHash&(authId&, this$)
-	if core.malloc.authId(authId&) then
-		core.malloc.getHash = cvl(left$(this$ + mkl$(0), 4))
+function malloc.service.getHashCode&(authId&, this$)
+	if malloc.service.authId(authId&) then
+		malloc.service.getHashCode = cvl(left$(this$ + mkl$(0), 4))
 	else
-		core.malloc.getHash = 0
+		malloc.service.getHashCode = 0
 		error 5
 	endif
 end function
 
-function core.malloc.hashCode&(authId&, kind%)
+function malloc.service.hashCode&(authId&, kind%)
 	static hashTable$
 	dim a%, b%, c%, d%, i&, hashCode$
-	if core.malloc.authId(authId&) then
+	if malloc.service.authId(authId&) then
 		if kind% then
 			randomize timer
 			do
@@ -93,73 +110,73 @@ function core.malloc.hashCode&(authId&, kind%)
 				next
 			loop while hashCode$ = mkl$(0)
 			hashTable$ = hashTable$ + hashCode$
-			core.malloc.hashCode = cvl(hashCode$)
+			malloc.service.hashCode = cvl(hashCode$)
 		elseif len(hashTable$) < 4 then
 			hashCode$ = left$(hashTable$ + mkl$(0), 4)
-			core.malloc.hashCode = cvl(hashCode$)
+			malloc.service.hashCode = cvl(hashCode$)
 		else
 			hashCode$ = right$(hashTable$, 4)
-			core.malloc.hashCode = cvl(hashCode$)
+			malloc.service.hashCode = cvl(hashCode$)
 		endif
 	else
-		core.malloc.hashCode = 0
+		malloc.service.hashCode = 0
 		error 5
 	endif
 end function
 
-function core.malloc.get$(authId&, mallocTable$, value$)
+function malloc.service.get$(authId&, mallocTable$, value$)
 	dim hashCode&, size&, this$, thisHashCode&, thisValue$
-	if core.malloc.authId(authId&) then
-		hashCode& = core.malloc.getHash(authId&, value$)
+	if malloc.service.authId(authId&) then
+		hashCode& = malloc.service.getHashCode(authId&, value$)
 		if hashCode& then
 			this$ = mallocTable$
 			while len(this$)
-				thisHashCode& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
-				size& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
+				thisHashCode& = malloc.service.getHashCode(authId&, this$): this$ = mid$(this$, 5)
+				size& = malloc.service.getHashCode(authId&, this$): this$ = mid$(this$, 5)
 				thisValue$ = left$(this$, size&): this$ = mid$(this$, size& + 1)
 				if(thisHashCode& = hashCode&) then
-					core.malloc.get = thisValue$
+					malloc.service.get = thisValue$
 					exit function
 				endif
 			wend
-			core.malloc.get = ""
+			malloc.service.get = ""
 			error 7
 		else
-			core.malloc.get = ""
+			malloc.service.get = ""
 			error 5
 		endif
 	else
-		core.malloc.get = ""
+		malloc.service.get = ""
 		error 5
 	endif
 end function
 
-function core.malloc.put$(authId&, mallocTable$, value$)
+function malloc.service.put$(authId&, mallocTable$, value$)
 	dim i&, size&, this$, thisHashCode&, thisValue$
-	if core.malloc.authId(authId&) then
+	if malloc.service.authId(authId&) then
 		this$ = mallocTable$
 		while len(this$)
-			thisHashCode& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
-			size& = core.malloc.getHash(authId&, this$): this$ = mid$(this$, 5)
+			thisHashCode& = malloc.service.getHashCode(authId&, this$): this$ = mid$(this$, 5)
+			size& = malloc.service.getHashCode(authId&, this$): this$ = mid$(this$, 5)
 			thisValue$ = left$(this$, size&): this$ = mid$(this$, size& + 1)
 			if(thisValue$ = value$) then
-				core.malloc.put = mkl$(thisHashCode&)
+				malloc.service.put = mkl$(thisHashCode&)
 				exit function
 			endif
 		wend
-		mallocTable$ = mallocTable$ + core.malloc.valueOf(authId&, core.malloc.hashCode(authId&, 1), value$)
-		core.malloc.put = mkl$(core.malloc.hashCode(authId&, 0))
+		mallocTable$ = mallocTable$ + malloc.service.valueOf(authId&, malloc.service.hashCode(authId&, 1), value$)
+		malloc.service.put = mkl$(malloc.service.hashCode(authId&, 0))
 	else
-		core.malloc.put = ""
+		malloc.service.put = ""
 		error 5
 	endif
 end function
 
-function core.malloc.valueOf$(authId&, hashCode&, value$)
-	if core.malloc.authId(authId&) then
-		core.malloc.valueOf = mkl$(hashCode&) + mkl$(len(value$)) + value$
+function malloc.service.valueOf$(authId&, hashCode&, value$)
+	if malloc.service.authId(authId&) then
+		malloc.service.valueOf = mkl$(hashCode&) + mkl$(len(value$)) + value$
 	else
-		core.malloc.valueOf = ""
+		malloc.service.valueOf = ""
 		error 5
 	endif
 end function
