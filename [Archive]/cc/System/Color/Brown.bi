@@ -1,8 +1,0 @@
-$IF QURE64_CC_SYSTEM_COLOR_BROWN=UNDEFINED THEN
-$LET QURE64_CC_SYSTEM_COLOR_BROWN=DEFINED
-
-function Color.Brown&()
-	Color.Brown = Color.of(127, 63, 0)
-end function
-
-$ENDIF

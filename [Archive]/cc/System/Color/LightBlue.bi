@@ -1,8 +1,0 @@
-$IF QURE64_CC_SYSTEM_COLOR_LIGHTBLUE=UNDEFINED THEN
-$LET QURE64_CC_SYSTEM_COLOR_LIGHTBLUE=DEFINED
-
-function Color.LightBlue&()
-	Color.LightBlue = Color.of(127, 127, 255)
-end function
-
-$ENDIF

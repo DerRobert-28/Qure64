@@ -1,8 +1,0 @@
-$IF QURE64_CC_SYSTEM_COLOR_PURPLE=UNDEFINED THEN
-$LET QURE64_CC_SYSTEM_COLOR_PURPLE=DEFINED
-
-function Color.Purple&()
-	Color.Purple = Color.of(255, 0, 127)
-end function
-
-$ENDIF

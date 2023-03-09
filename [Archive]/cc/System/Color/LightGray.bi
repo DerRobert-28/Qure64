@@ -1,8 +1,0 @@
-$IF QURE64_CC_SYSTEM_COLOR_LIGHTGRAY=UNDEFINED THEN
-$LET QURE64_CC_SYSTEM_COLOR_LIGHTGRAY=DEFINED
-
-function Color.LightGray&()
-	Color.LightGray = Color.of(170, 170, 170)
-end function
-
-$ENDIF

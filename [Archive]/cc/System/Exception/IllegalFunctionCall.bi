@@ -1,8 +1,0 @@
-$IF QURE64_CC_SYSTEM_EXCEPTION_ILLEGALFUN_46=UNDEFINED THEN
-$LET QURE64_CC_SYSTEM_EXCEPTION_ILLEGALFUN_46=DEFINED
-
-function Exception.IllegalFunctionCall%()
-	Exception.IllegalFunctionCall = 5
-end function
-
-$ENDIF
